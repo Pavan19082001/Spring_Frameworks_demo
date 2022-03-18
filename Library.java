@@ -4,26 +4,24 @@
 package SpringFrameWorksdemo;
 
 import org.springframework.context.ApplicationContext;
+
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.Person;
 import com.Customer;
+import com.Employee;
+import com.Department;
 public class Library {
     public boolean someLibraryMethod() {
         return true;
     }
     public static void main(String[] args) {
-		ApplicationContext context = new ClassPathXmlApplicationContext("springbean.xml");
-		Person p = context.getBean(Person.class);
+		ApplicationContext context = new ClassPathXmlApplicationContext("spr.xml");
+		Department dept = context.getBean("Department", Department.class);
 		
-		System.out.println(p.getPersonName());
-		System.out.println(p.getPersonAddress());
-		
-		Customer custo = context.getBean("Customer", Customer.class);
-		
-		System.out.println(custo.getCustomerName());
-		System.out.println(custo.getCustomerEmail());
-		
+		System.out.println(dept.getDepartmentName());
+		System.out.println(dept.getManager().getEmployeeName());
+		System.out.println(dept.getManager().getBasicSalary());
 		
 	}
 }
